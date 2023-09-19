@@ -1,0 +1,18 @@
+{
+	"env": {
+		"type": "string",
+		"value": "dev"
+	},
+	"sqlserver": {
+		"type": "string",
+		"value": "sqlhost.database.windows.net"
+	},
+	"devsqldb": {
+		"type": "string",
+		"value": "sqldb"
+	},
+	"qasqldb": {
+		"type": "string",
+		"value": "qasqldb"
+	}
+}

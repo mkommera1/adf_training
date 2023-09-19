@@ -1,0 +1,27 @@
+{
+	"name": "AzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"server": {
+					"value": "@\\dataset().servername",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"servername": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "emp"
+		}
+	}
+}

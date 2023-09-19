@@ -1,0 +1,15 @@
+{
+	"name": "MySql_ecomdb",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"connectionString": "ce9so5ipG6UuXpXCj+oTu4mhFkmgqEz/dGcUOQvq6+lVqa6nqC9n2ogaeFd5ZeqE06PKE5ERC+vO+AStN1Ny9A=="
+		},
+		"connectVia": {
+			"referenceName": "IRSelfHosted",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -9,6 +9,10 @@
 			"env": {
 				"type": "string",
 				"value": "dev"
+			},
+			"qa_hostname": {
+				"type": "string",
+				"value": "localhost"
 			}
 		}
 	},

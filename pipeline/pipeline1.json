@@ -1,0 +1,189 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "data/emp/emp.txt"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.emp"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "empno",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMPNO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 4
+								}
+							},
+							{
+								"source": {
+									"name": "ename",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ENAME",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "job",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "JOB",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "mgr",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MGR",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 4
+								}
+							},
+							{
+								"source": {
+									"name": "hiredate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "HIREDATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "sal",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SAL",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 7
+								}
+							},
+							{
+								"source": {
+									"name": "comm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COMM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 7
+								}
+							},
+							{
+								"source": {
+									"name": "deptno",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEPTNO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 2
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "empdata",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference",
+						"parameters": {
+							"server": {
+								"value": "@pipeline().globalParameters.sqlserver",
+								"type": "Expression"
+							},
+							"database": {
+								"value": "@if(equals(pipeline().DataFactory,'devsummerdatafactory'),pipeline().globalParameters.devsqldb,pipeline().globalParameters.qasqldb)",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-09-19T18:04:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

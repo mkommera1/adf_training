@@ -1,0 +1,29 @@
+{
+	"name": "devsummerdatafactory",
+	"properties": {
+		"globalParameters": {
+			"env": {
+				"type": "string",
+				"value": "dev"
+			},
+			"sqlserver": {
+				"type": "string",
+				"value": "sqlhost.database.windows.net"
+			},
+			"devsqldb": {
+				"type": "string",
+				"value": "sqldb"
+			},
+			"qasqldb": {
+				"type": "string",
+				"value": "qasqldb"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "079dbe00-0b35-47f1-8fba-92e498abb445",
+		"tenantId": "5bf83608-f9c6-4cd1-aa4e-6eab2e4f1cc3"
+	}
+}

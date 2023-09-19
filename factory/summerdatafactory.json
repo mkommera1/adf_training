@@ -5,6 +5,10 @@
 			"local_hostname": {
 				"type": "string",
 				"value": "localhost"
+			},
+			"env": {
+				"type": "string",
+				"value": "dev"
 			}
 		}
 	},

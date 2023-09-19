@@ -1,0 +1,6 @@
+{
+	"local_hostname": {
+		"type": "string",
+		"value": "localhost"
+	}
+}
